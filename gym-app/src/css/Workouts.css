@@ -1,0 +1,11 @@
+/* Make the popup list scrollable and centered */
+.popup-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);  /* 3 items per row */
+    gap: 20px;  /* Space between items */
+    padding: 20px;
+    justify-items: center; /* Center each popup within its grid item */
+    overflow-y: auto;  /* Enable vertical scroll if the content overflows */
+    max-height: 100vh;  /* Limit the height to the viewport height */
+    margin-bottom: 20px; /* Add space below the list */
+  }

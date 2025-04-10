@@ -1,0 +1,25 @@
+/* src/components/BottomNav.css */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #4a7096;
+    border-color: #000;
+    border-radius: 2px;
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0;
+    z-index: 1000;
+  }
+  
+  .nav-item {
+    text-decoration: none;
+    color: #0000;
+    font-size: 24px;
+  }
+  
+  .nav-item.active {
+    color: #007bff;
+    font-weight: bold;
+    border-color: #000;
+  }

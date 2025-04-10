@@ -1,0 +1,23 @@
+/* TopNav.css */
+.top-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    z-index: 1000;
+  }
+  
+  .nav-item {
+    text-decoration: none;
+    color: #555;
+    font-size: 16px;
+  }
+  
+  .nav-item.active {
+    color: #007bff;
+    font-weight: bold;
+  }

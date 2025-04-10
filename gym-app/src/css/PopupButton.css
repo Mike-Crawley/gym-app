@@ -1,0 +1,129 @@
+/* Ensure the popup list takes full width */
+.popup-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);  /* 3 items per row */
+  gap: 20px;  /* Space between items */
+  overflow-x: auto;  /* Allow horizontal scroll if necessary */
+  padding: 20px;
+  justify-items: center; /* Center each popup within its grid item */
+  max-height: 80vh;  /* Limit the height to 80% of the viewport height */
+  margin-bottom: 40px; /* Add space below the list */
+}
+
+/* Add a scrollbar to the popup list */
+.popup-list::-webkit-scrollbar {
+  height: 8px; /* Customize scrollbar height */
+}
+
+.popup-list::-webkit-scrollbar-thumb {
+  background-color: #888;
+}
+
+.popup-list::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+/* Make each popup square and responsive */
+.popup-box {
+  position: relative;
+  width: 100%; /* Takes up the full width of the grid item */
+  padding-top: 100%; /* Ensures the height is equal to the width, making it square */
+  background: #4a7096;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12;
+}
+
+/* The overlay is the same for all variants */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+}
+
+.popup-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.popup-box {
+  width: 80%;
+  max-width: 95%;
+  height: 80%;
+  top: 10%;
+  left: 5%;
+  right: 5%;
+  padding: 20px;
+  border-radius: 0;
+  position: absolute;
+  z-index: 1002;
+}
+
+/* Popup button styles */
+.popup-trigger {
+  padding: 12px 24px;
+  border-radius: 4px;
+  color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Button Sizes */
+.popup-trigger.small {
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.popup-trigger.medium {
+  padding: 12px 24px;
+  font-size: 16px;
+  width: 100%
+}
+
+.popup-trigger.large {
+  width: 100%;  /* or any width */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Button Shapes */
+.popup-trigger.rounded {
+  border-radius: 15px;  /* Fully rounded button */
+}
+
+.popup-trigger.square {
+  border-radius: 0;  /* Sharp corners (square) */
+}
+
+.popup-trigger.default {
+  background: #1b8dde;
+}
+
+.popup.trigger.danger {
+  background: #dc3545;
+}
+
+.popup-trigger.success {
+  background: #28a745;
+}
+
+.popup-trigger.fullscreen {
+  background: #f0ad4e;
+}
