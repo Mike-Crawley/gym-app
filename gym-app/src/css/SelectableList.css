@@ -1,0 +1,45 @@
+.exercise-list {
+    height: 100%; /* fill popup */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  .exercise-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    background-color: #f2f2f2;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border 0.2s ease;
+  }
+  
+  .exercise-item:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .exercise-item.selected {
+    background-color: #d1e7ff;
+    border-color: #3399ff;
+  }
+  
+  .exercise-item .label {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .exercise-item .checkmark {
+    font-size: 18px;
+    color: #3399ff;
+    display: none;
+  }
+  
+  .exercise-item.selected .checkmark {
+    display: block;
+  }

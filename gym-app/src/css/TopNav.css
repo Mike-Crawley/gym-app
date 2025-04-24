@@ -1,23 +1,34 @@
-/* TopNav.css */
 .top-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: #fff;
-    border-bottom: 1px solid #ddd;
-    display: flex;
-    justify-content: space-around;
-    padding: 10px 0;
-    z-index: 1000;
-  }
-  
-  .nav-item {
-    text-decoration: none;
-    color: #555;
-    font-size: 16px;
-  }
-  
-  .nav-item.active {
-    color: #007bff;
-    font-weight: bold;
-  }
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #1f2937; /* Dark slate gray */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 12px 0;
+  z-index: 1005;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Downward shadow */
+  border-bottom: 1px solid #374151;
+}
+
+.top-nav-item {
+  text-decoration: none;
+  color: #d1d5db; /* Cool gray */
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s ease;
+  padding: 8px 12px;
+}
+
+.top-nav-item:hover {
+  color: #ffffff; /* On hover */
+}
+
+.top-nav-item.active {
+  color: #3b82f6; /* Tailwind blue */
+  font-weight: 600;
+  border-bottom: 2px solid #3b82f6;
+}

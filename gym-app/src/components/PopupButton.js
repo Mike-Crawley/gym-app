@@ -1,12 +1,11 @@
-// src/components/Popup.js
 import { useState } from "react";
 import "../css/PopupButton.css";
 
 export default function PopupButton({
   triggerText = "Open",
   variant = "default",
-  buttonSize = "medium",  // Default size is medium
-  buttonShape = "rounded",  // Default shape is rounded
+  buttonSize = "medium",
+  buttonShape = "rounded",
   children,
   onClose
 }) {
@@ -20,17 +19,19 @@ export default function PopupButton({
   return (
     <>
       <button
-        className={`popup-trigger ${variant} ${buttonSize} ${buttonShape}`} // Apply size and shape dynamically
+        className={`popup-trigger ${variant} ${buttonSize} ${buttonShape}`}
         onClick={() => setIsOpen(true)}
       >
         {triggerText}
       </button>
 
       {isOpen && (
-        <div className="popup-overlay" onClick={closePopup}>
-          <div className={`popup-box ${variant}`} onClick={(e) => e.stopPropagation()}>
-            <button className="popup-close" onClick={closePopup}>✕</button>
-            <div className="popup-content">{children}</div>
+        <div className="popup-overlay">
+          <div className={`popup-box ${variant}`}>
+            <button className="popup-close" onClick={closePopup}>×</button>
+            <div className="popup-content">
+              {typeof children === 'function' ? children(closePopup) : children}
+            </div>
           </div>
         </div>
       )}

@@ -5,14 +5,15 @@ import Workouts from "./pages/Workouts";
 import Settings from "./pages/Settings";
 import BottomNav from "./components/BottomNav";
 import TopNav from "./components/TopNav";
+
 import "./css/App.css"
 
 function App() {
   return (
     <Router>
+      <TopNav />
       <div className="app-container">
-      {/* <TopNav /> */}
-        {/* Page content */}
+      <TopNav />
         <Routes>
           <Route path="/" element={<Account />} />
           <Route path="/workouts" element={<Workouts />} />

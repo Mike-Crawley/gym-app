@@ -1,107 +1,80 @@
+import { useState } from "react";
+
 import PopupButton from "../components/PopupButton";
+import SelectableList from "../components/SelectableList";
+import WorkoutTracker from "../components/WorkoutTracker"
 import "../css/Workouts.css"
+import "../css/SelectableList.css"
+
+import workouts from "../data/workouts.json";
+import lifts from "../data/lifts.json";
 
 export default function Workouts() {
 
-    // Change this later from a database of exersises
-    const popupsData = [
-        {
-          triggerText: "Workout 1",
-          variant: "default",
-          buttonSize: "medium",
-          buttonShape: "rounded",
-          content: (
-            <>
-              <h2>Popup 1</h2>
-              <p>This is the first popup</p>
-            </>
-          ),
-        },
-        {
-          triggerText: "Workout 2",
-          variant: "default",
-          buttonSize: "medium",
-          buttonShape: "rounded",
-          content: (
-            <>
-              <h2>Popup 2</h2>
-              <p>This is the second popup</p>
-            </>
-          ),
-        },
-        {
-          triggerText: "Workout 3",
-          variant: "default",
-          buttonSize: "medium",
-          buttonShape: "rounded",
-          content: (
-            <>
-              <h2>Popup 3</h2>
-              <p>This is the third popup</p>
-            </>
-          ),
-        },
-        {
-          triggerText: "Workout 4",
-          variant: "default",
-          buttonSize: "medium",
-          buttonShape: "rounded",
-          content: (
-            <>
-              <h2>Popup 4</h2>
-              <p>This is the fourth popup</p>
-            </>
-          ),
-        },
-        {
-            triggerText: "Workout 5",
-            variant: "default",
-            buttonSize: "medium",
-            buttonShape: "rounded",
-            content: (
-              <>
-                <h2>Popup 4</h2>
-                <p>This is the fourth popup</p>
-              </>
-            ),
-          },
-          {
-          triggerText: "Workout 6",
-          variant: "default",
-          buttonSize: "medium",
-          buttonShape: "rounded",
-          content: (
-            <>
-              <h2>Popup 4</h2>
-              <p>This is the fourth popup</p>
-            </>
-          ),
-        },
-      ];
+  const [activeWorkoutId, setActiveWorkoutId] = useState(null);
 
+  const handleStart = (closePopup, workoutId) => {
+    closePopup();
+    console.log(workoutId)
+    setActiveWorkoutId(workoutId);
+  };
+
+  const makeActiveWorkout = (workoutId) => {
+    return workouts[workoutId].lifs.map((id) => lifts[id])
+  }
 
   return (
     <div className="p-4">
-      <h1>Workouts</h1>
+      <div className="workouts-body">
+        <h1>Workouts</h1>
 
-      <PopupButton triggerText="Create New Workout" variant="fullscreen" buttonSize="large" buttonShape="rounded">
-            <p>This is a custom popup modal!</p>
-            <p>You can put anything inside here.</p>
+        <PopupButton
+          triggerText="Create New Workout"
+          variant="fullscreen"
+          buttonSize="medium"
+          buttonShape="rounded"
+        >
+          {(closePopup) => <SelectableList onSave={closePopup} />}
         </PopupButton>
 
-      {/* Popup List Container for Grid Layout */}
-      <div className="popup-list">
-        {popupsData.map((popup, index) => (
-          <PopupButton
-            key={index}
-            triggerText={popup.triggerText}
-            variant={popup.variant}
-            buttonSize={popup.buttonSize}
-            buttonShape={popup.buttonShape}
-          >
-            {popup.content}
-          </PopupButton>
-        ))}
+        <div className="popup-list">
+          {workouts.map((workout) => (
+            <PopupButton
+              key={workout.id}
+              triggerText={workout.name}
+              variant="default"
+              buttonSize="medium"
+              buttonShape="rounded"
+            >
+              {(closePopup) => (
+                <>
+                  <div className="exercise-list">
+                    {workout.lifs.map((id) => (
+                        <div className="exercise-item">
+                      <span key={id}>
+                        {lifts[id].name} ({lifts[id].type})
+                      </span>
+                      </div>
+                    ))}
+                    </div>
+                  <button
+                    className="bg-green-500 text-white px-4 py-2 rounded mt-4"
+                    onClick={() => handleStart(closePopup, workout.id)}
+                  >
+                    Start
+                  </button>
+                </>
+              )}
+            </PopupButton>
+          ))}
+        </div>
+        {activeWorkoutId !== null && (
+          <WorkoutTracker
+            workout={workouts[activeWorkoutId]}
+            exercises={makeActiveWorkout(activeWorkoutId)}
+            onClose={() => setActiveWorkoutId(null)}
+          />
+        )}
       </div>
     </div>
   );

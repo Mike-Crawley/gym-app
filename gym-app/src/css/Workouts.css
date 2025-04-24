@@ -1,11 +1,26 @@
-/* Make the popup list scrollable and centered */
-.popup-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);  /* 3 items per row */
-    gap: 20px;  /* Space between items */
-    padding: 20px;
-    justify-items: center; /* Center each popup within its grid item */
-    overflow-y: auto;  /* Enable vertical scroll if the content overflows */
-    max-height: 100vh;  /* Limit the height to the viewport height */
-    margin-bottom: 20px; /* Add space below the list */
+.workouts-body {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 80%; /* Adjusted from 90% */
+    background: #dce0e4;
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 20px 24px; /* Extra right padding */
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Header */
+  .workouts-body h2 {
+    font-size: 22px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    color: #1f2937;
+    text-align: center;
   }

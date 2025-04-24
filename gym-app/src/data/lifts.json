@@ -1,0 +1,38 @@
+[   
+    {
+        "id": 0,
+        "name": "Walking",
+        "type": "Cardio",
+        "measurement": "time"
+    },
+    {
+        "id": 1,
+        "name": "Bench Press",
+        "type": "Dumbell",
+        "measurement": "weight"
+    },
+    {
+        "id": 2,
+        "name": "Bench Press",
+        "type": "Barbell",
+        "measurement": "weight"
+    },
+    {
+        "id": 3,
+        "name": "Squat",
+        "type": "Barbell",
+        "measurement": "weight"
+    },
+    {
+        "id": 4,
+        "name": "Bicep Curl",
+        "type": "Barbell",
+        "measurement": "weight"
+    },
+    {
+        "id": 5,
+        "name": "Bicep Curl",
+        "type": "Dumbell",
+        "measurement": "weight"
+    }
+]

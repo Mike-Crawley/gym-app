@@ -1,43 +1,4 @@
-/* Ensure the popup list takes full width */
-.popup-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);  /* 3 items per row */
-  gap: 20px;  /* Space between items */
-  overflow-x: auto;  /* Allow horizontal scroll if necessary */
-  padding: 20px;
-  justify-items: center; /* Center each popup within its grid item */
-  max-height: 80vh;  /* Limit the height to 80% of the viewport height */
-  margin-bottom: 40px; /* Add space below the list */
-}
-
-/* Add a scrollbar to the popup list */
-.popup-list::-webkit-scrollbar {
-  height: 8px; /* Customize scrollbar height */
-}
-
-.popup-list::-webkit-scrollbar-thumb {
-  background-color: #888;
-}
-
-.popup-list::-webkit-scrollbar-thumb:hover {
-  background-color: #555;
-}
-
-/* Make each popup square and responsive */
-.popup-box {
-  position: relative;
-  width: 100%; /* Takes up the full width of the grid item */
-  padding-top: 100%; /* Ensures the height is equal to the width, making it square */
-  background: #4a7096;
-  border-radius: 4px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 12;
-}
-
-/* The overlay is the same for all variants */
+/* Popup Box (Main) */
 .popup-overlay {
   position: fixed;
   top: 0;
@@ -51,6 +12,17 @@
   z-index: 1001;
 }
 
+.popup-box {
+  width: 90%;
+  max-width: 600px;
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  position: relative;
+  text-align: center;
+}
+
 .popup-close {
   position: absolute;
   top: 8px;
@@ -61,31 +33,23 @@
   cursor: pointer;
 }
 
-.popup-box {
-  width: 80%;
-  max-width: 95%;
-  height: 80%;
-  top: 10%;
-  left: 5%;
-  right: 5%;
-  padding: 20px;
-  border-radius: 0;
-  position: absolute;
-  z-index: 1002;
-}
-
-/* Popup button styles */
+/* Popup Trigger Buttons */
 .popup-trigger {
-  padding: 12px 24px;
-  border-radius: 4px;
+  background-color: #4169be;
   color: white;
-  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
   font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  font-weight: 500;
+  border: none;
+  width: 100%;
+  transition: background-color 0.2s ease-in-out;
 }
 
-/* Button Sizes */
+.popup-trigger:hover {
+  background-color: #1e40af;
+}
+
 .popup-trigger.small {
   padding: 8px 16px;
   font-size: 14px;
@@ -94,26 +58,15 @@
 .popup-trigger.medium {
   padding: 12px 24px;
   font-size: 16px;
-  width: 100%
 }
 
 .popup-trigger.large {
-  width: 100%;  /* or any width */
-  margin-left: auto;
-  margin-right: auto;
+  padding: 16px 24px;
+  font-size: 18px;
 }
 
-/* Button Shapes */
 .popup-trigger.rounded {
-  border-radius: 15px;  /* Fully rounded button */
-}
-
-.popup-trigger.square {
-  border-radius: 0;  /* Sharp corners (square) */
-}
-
-.popup-trigger.default {
-  background: #1b8dde;
+  border-radius: 15px;
 }
 
 .popup.trigger.danger {
@@ -125,5 +78,205 @@
 }
 
 .popup-trigger.fullscreen {
-  background: #f0ad4e;
+  background: #e47e0a;
+}
+
+/* Exercise List */
+.popup-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  overflow-x: auto;
+  padding: 10px;
+  justify-items: center;
+  max-height: 80vh;
+  margin-bottom: 20px;
+}
+
+.popup-list::-webkit-scrollbar {
+  height: 8px;
+}
+
+.popup-list::-webkit-scrollbar-thumb {
+  background-color: #888;
+}
+
+.popup-list::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+/* Exercise Box */
+.popup-box {
+  width: 50%;
+  padding-top: 100%;
+  background: #4a7096;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+}
+
+.popup-list-item {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+.popup-list-item:hover {
+  transform: scale(1.05);
+}
+
+.popup-list-item h3 {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.popup-list-item button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.popup-list-item button:hover {
+  background-color: #1e7e34;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 640px) {
+  .popup-box {
+    width: 95%;
+    padding: 16px;
+  }
+
+  .popup-trigger {
+    font-size: 14px;
+    padding: 10px 16px;
+  }
+
+  .popup-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+/* Exercise Tracker Styles */
+.workout-tracker-popup {
+  position: fixed;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 600px;
+  height: 80%;
+  background: #f9fafb;
+  z-index: 1000;
+  overflow-y: auto;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.workout-tracker-popup h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 16px;
+}
+
+.exercise-section {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.exercise-section h3 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+.set-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.set-row input {
+  flex: 1 1 48%;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: #f3f4f6;
+  color: #111827;
+  transition: border-color 0.2s ease;
+}
+
+.set-row input:focus {
+  border-color: #2563eb;
+  background-color: #fff;
+}
+
+.exercise-section button.add-set {
+  margin-top: 8px;
+  background-color: #e5e7eb;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  color: #1f2937;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.exercise-section button.add-set:hover {
+  background-color: #d1d5db;
+}
+
+.save-button {
+  align-self: center;
+  background-color: #10b981;
+  color: white;
+  padding: 14px 28px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+  margin-top: 24px;
+  width: 100%;
+  max-width: 400px;
+  transition: background-color 0.2s ease;
+}
+
+.save-button:hover {
+  background-color: #059669;
+}
+
+/* Small screen tweaks */
+@media (max-width: 640px) {
+  .workout-tracker-popup {
+    padding: 24px 16px;
+  }
+
+  .set-row input {
+    flex: 1 1 45%;
+  }
+
+  .save-button {
+    font-size: 18px;
+  }
 }
